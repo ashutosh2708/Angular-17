@@ -18,12 +18,10 @@ import { NgSelectModule } from '@ng-select/ng-select';
 })
 export class EvaluationComponent {
   medicalForm: any;
-  constructor(private formBuilder: FormBuilder) {
-
-  }
+  constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {
-    this.initializeForm()
+    this.initializeForm();
   }
 
   initializeForm() {
@@ -37,14 +35,25 @@ export class EvaluationComponent {
       email: ['', [Validators.required, Validators.email]],
       personalHistory: [''],
       familyHistory: [''],
-      painScore: ['']
+      painScore: [''],
     });
   }
   submitForm() {
     if (this.medicalForm.valid) {
-      console.log("Form is submitted", this.medicalForm.value);
-
+      console.log('Form is submitted', this.medicalForm.value);
     }
   }
-
+  // Event Binding
+  submit() {
+    console.log('Submitted');
+  }
+  // Event filtering
+  handleSubmit(event: any) {
+    console.log('Eventttt', event);
+    if (event.ctrlKey) {
+      console.log('ontrol key is press');
+    } else {
+      console.log('Normal');
+    }
+  }
 }

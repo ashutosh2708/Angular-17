@@ -208,10 +208,26 @@
       </select>
     </div>
 
-    <button
+    <!-- <button
       type="submit"
       [disabled]="medicalForm.invalid"
       (click)="submitForm()"
+    >
+      Submit
+    </button> -->
+
+    <!-- -----Event Binding----- -->
+    <!-- <button
+      type="submit"
+      (click)="submit()"
+    >
+      Submit
+    </button> -->
+
+    <!-- -----Event Filtering----- -->
+    <button
+      type="submit"
+      (click)="handleSubmit($event)"
     >
       Submit
     </button>
