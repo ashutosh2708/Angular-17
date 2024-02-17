@@ -1,0 +1,219 @@
+<div class="medical-checkup-form">
+  <h2>Medical Checkup Form</h2>
+  <form [formGroup]="medicalForm">
+    <div class="form-group">
+      <label for="name" class="asterisk">Name</label>
+      <input
+        type="text"
+        id="name"
+        formControlName="name"
+        placeholder="Enter your name"
+      />
+      <div
+        *ngIf="
+          medicalForm.get('name').hasError('required') &&
+          medicalForm.get('name').touched
+        "
+        class="error-message"
+      >
+        Name is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="age" class="asterisk">Age</label>
+      <input
+        type="text"
+        id="age"
+        formControlName="age"
+        placeholder="Enter your age"
+      />
+      <div
+        *ngIf="
+          medicalForm.get('age').hasError('required') &&
+          medicalForm.get('age').touched
+        "
+        class="error-message"
+      >
+        Age is required
+      </div>
+      <div
+        *ngIf="
+          medicalForm.get('age').hasError('min') &&
+          medicalForm.get('age').touched
+        "
+        class="error-message"
+      >
+        Age must be greater than 1
+      </div>
+      <div
+        *ngIf="
+          medicalForm.get('age').hasError('max') &&
+          medicalForm.get('age').touched
+        "
+        class="error-message"
+      >
+        Age must be less than or equal to 100
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="gender" class="asterisk">Gender</label>
+      <select
+        id="gender"
+        formControlName="gender"
+        placeholder="Please select Gender"
+      >
+        <option value="" disabled selected>Select Gender</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
+      <div
+        *ngIf="
+          medicalForm.get('gender').hasError('required') &&
+          medicalForm.get('gender').touched
+        "
+        class="error-message"
+      >
+        Gender is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="address" class="asterisk">Address</label>
+      <input
+        type="text"
+        id="address"
+        formControlName="address"
+        placeholder="Enter your address"
+      />
+      <div
+        *ngIf="
+          medicalForm.get('address').hasError('required') &&
+          medicalForm.get('address').touched
+        "
+        class="error-message"
+      >
+        Address is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="diagnosis" class="asterisk">Diagnosis</label>
+      <input
+        type="text"
+        id="diagnosis"
+        formControlName="diagnosis"
+        placeholder="Enter your diagnosis"
+      />
+      <div
+        *ngIf="
+          medicalForm.get('diagnosis').hasError('required') &&
+          medicalForm.get('diagnosis').touched
+        "
+        class="error-message"
+      >
+        Diagnosis is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="contact" class="asterisk">Contact</label>
+      <input
+        type="tel"
+        id="contact"
+        formControlName="contact"
+        placeholder="Enter your Contact"
+      />
+      <div
+        *ngIf="
+          medicalForm.get('contact').hasError('required') &&
+          medicalForm.get('contact').touched
+        "
+        class="error-message"
+      >
+        Contact number is required
+      </div>
+      <div
+        *ngIf="
+          medicalForm.get('contact').hasError('pattern') &&
+          medicalForm.get('contact').touched
+        "
+        class="error-message"
+      >
+        Please enter a valid 10-digit contact number
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email" class="asterisk">Email</label>
+      <input
+        type="email"
+        id="email"
+        formControlName="email"
+        placeholder="Enter your email"
+      />
+      <div
+        *ngIf="
+          medicalForm.get('email').hasError('required') &&
+          medicalForm.get('email').touched
+        "
+        class="error-message"
+      >
+        Email is required
+      </div>
+      <div
+        *ngIf="
+          medicalForm.get('email').hasError('email') &&
+          medicalForm.get('email').touched
+        "
+        class="error-message"
+      >
+        Please enter a valid email address
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="personalHistory">Personal History</label>
+      <input
+        type="text"
+        id="personalHistory"
+        formControlName="personalHistory"
+        placeholder="Enter your Personal History"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="familyHistory">Family History</label>
+      <input
+        type="text"
+        id="familyHistory"
+        formControlName="familyHistory"
+        placeholder="Enter your Family History"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="painScore">Pain Score</label>
+      <select
+        id="painScore"
+        formControlName="painScore"
+        placeholder="Please select pain score"
+      >
+        <option value="" disabled selected>Select Pain Score</option>
+        <option value="0">0 - No Pain</option>
+        <option value="5">5 - Moderate Pain</option>
+        <option value="10">10 - Worst Pain</option>
+      </select>
+    </div>
+
+    <button
+      type="submit"
+      [disabled]="medicalForm.invalid"
+      (click)="submitForm()"
+    >
+      Submit
+    </button>
+  </form>
+</div>
