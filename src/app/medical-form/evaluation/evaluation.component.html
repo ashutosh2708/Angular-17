@@ -63,6 +63,7 @@
         id="gender"
         formControlName="gender"
         placeholder="Please select Gender"
+        (change)="onGenderChange($event)"
       >
         <option value="" disabled selected>Select Gender</option>
         <option value="male">Male</option>
@@ -80,6 +81,7 @@
       </div>
     </div>
 
+    <p>{{selectedGender}}</p>
     <div class="form-group">
       <label for="address" class="asterisk">Address</label>
       <input

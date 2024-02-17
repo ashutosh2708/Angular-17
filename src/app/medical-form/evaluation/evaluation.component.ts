@@ -18,10 +18,16 @@ import { NgSelectModule } from '@ng-select/ng-select';
 })
 export class EvaluationComponent {
   medicalForm: any;
+  selectedGender: any;
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.initializeForm();
+    this.medicalForm.get('gender').valueChanges.subscribe((value:string)=>{
+      this.selectedGender=value
+      console.log('SelectedGender ',this.selectedGender);
+      
+    })
   }
 
   initializeForm() {
@@ -55,5 +61,13 @@ export class EvaluationComponent {
     } else {
       console.log('Normal');
     }
+  }
+
+  onGenderChange(event: any) {
+    console.log('onGenderChange', event);
+    console.log('onGenderChange target', event.target);
+    console.log('onGenderChange value', event.target.value);
+
+    this.selectedGender = event.target.value;
   }
 }
