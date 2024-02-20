@@ -13,6 +13,8 @@ export class ErrorHandlingComponent {
   data: any;
   users: any;
   fetchData: any;
+  observerData: any;
+
   constructor(public userService: UserService) {
     // this.errorhandling()
     this.data = this.userService.getData();
@@ -24,6 +26,9 @@ export class ErrorHandlingComponent {
   async ngOnInit() {
     this.fetchData = await this.userService.fetchData();
     console.log('Fetcheddd data-----', this.fetchData);
+
+    this.observerData = this.userService.observeData();
+    console.log('Observe Data ', this.observerData);
   }
 
   sampleError() {
