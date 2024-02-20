@@ -9,7 +9,21 @@ export class UserService {
   getData() {
     return 'Data from Service';
   }
+
   getUsers() {
     return this.users;
+  }
+
+  fetchData(): Promise<string> {
+    return new Promise((resolve, reject) => {
+      const success = true;
+      setTimeout(() => {
+        if (success) {
+          resolve('Data from resolve---');
+        } else {
+          reject('Error while fetching---rejected');
+        }
+      }, 1000);
+    });
   }
 }
