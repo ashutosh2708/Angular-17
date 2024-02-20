@@ -23,11 +23,39 @@ export class EvaluationComponent {
 
   ngOnInit() {
     this.initializeForm();
-    this.medicalForm.get('gender').valueChanges.subscribe((value:string)=>{
-      this.selectedGender=value
-      console.log('SelectedGender ',this.selectedGender);
-      
-    })
+
+    // Assume this is the data fetched from API
+    const formData = {
+      name: 'John Doe',
+      age: 30,
+      gender: 'male',
+      address: '123 Main St',
+      diagnosis: 'Headach',
+      contact: '1234567890',
+      email: 'john@example.com',
+      personalHistory: 'None',
+      familyHistory: 'None',
+      painScore: '5',
+    };
+
+    // Use patchValue to update only specific fields
+    // this.medicalForm.patchValue({
+    //   name: formData.name,
+    //   age: formData.age,
+    //   gender: formData.gender,
+    //   address: formData.address,
+    //   diagnosis: formData.diagnosis,
+    //   conatact: formData.contact,
+    //   email: formData.email,
+    // });
+
+    // Use setValue to update the entire form
+    this.medicalForm.setValue(formData);
+
+    this.medicalForm.get('gender').valueChanges.subscribe((value: string) => {
+      this.selectedGender = value;
+      console.log('SelectedGender ', this.selectedGender);
+    });
   }
 
   initializeForm() {
@@ -70,4 +98,6 @@ export class EvaluationComponent {
 
     this.selectedGender = event.target.value;
   }
+
+  // Patch Values & Set Values
 }
