@@ -17,17 +17,17 @@ export class ErrorHandlingComponent {
 
   constructor(public userService: UserService) {
     // this.errorhandling()
-    this.data = this.userService.getData();
+    // this.data = this.userService.getData();
     console.log('Result', this.data);
-    this.users = this.userService.getUsers();
+    // this.users = this.userService.getUsers();
     console.log('Userss---', this.users);
   }
 
   async ngOnInit() {
-    this.fetchData = await this.userService.fetchData();
+    // this.fetchData = await this.userService.fetchData();
     console.log('Fetcheddd data-----', this.fetchData);
 
-    this.observerData = this.userService.observeData();
+    // this.observerData = this.userService.observeData();
     console.log('Observe Data ', this.observerData);
   }
 

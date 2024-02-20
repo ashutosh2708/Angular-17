@@ -4,6 +4,7 @@ import { StudentComponent } from './student/student.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { InterfaceComponent } from './interface/interface.component';
 import { ErrorHandlingComponent } from './error-handling/error-handling.component';
+import { CrudComponent } from './crud/crud.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'about-us', component: AboutUsComponent },
   { path: 'interface', component: InterfaceComponent },
   { path: 'error-handling', component: ErrorHandlingComponent },
+  { path: 'crud', component: CrudComponent },
 ];
 
 @NgModule({
