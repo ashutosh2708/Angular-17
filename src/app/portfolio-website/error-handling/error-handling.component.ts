@@ -1,15 +1,23 @@
 import { Component } from '@angular/core';
+import { UserService } from '../../user.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-error-handling',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './error-handling.component.html',
   styleUrl: './error-handling.component.scss',
 })
 export class ErrorHandlingComponent {
-  constructor() {
-    this.errorhandling();
+  data: any;
+  users: any;
+  constructor(public userService: UserService) {
+    // this.errorhandling()
+    this.data = this.userService.getData();
+    console.log('Result', this.data);
+    this.users = this.userService.getUsers();
+    console.log('Userss---', this.users);
   }
   sampleError() {
     let x: number = null!;
