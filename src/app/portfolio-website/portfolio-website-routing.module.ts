@@ -1,0 +1,20 @@
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { StudentComponent } from './student/student.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { InterfaceComponent } from './interface/interface.component';
+
+const routes: Routes = [
+  {
+    path: 'student',
+    component: StudentComponent,
+  },
+  { path: 'about-us', component: AboutUsComponent },
+  { path: 'interface', component: InterfaceComponent },
+];
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
+})
+export class PortfolioWebsiteRoutingModule {}
