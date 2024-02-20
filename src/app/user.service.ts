@@ -1,53 +1,36 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  users: any = ['user1', 'user2', 'user3'];
-  constructor() {}
+  // Http Requests
+  public getUrl = 'assets/data.json';
+  // GetByID ='assets/data.json?id=2'
 
-  // Http Request
+  constructor(public http: HttpClient) {}
 
-  // weather ---- 9:00 am -20, 10:00 am -30, 11:00 am -32
+  // CRUD
 
-  //Subscribe
-  observeData() {
-    let request = of('Data from my side'); //return Observable---stream of data
-    request.subscribe({
-      // Observer
-      next: (data) => {
-        console.log('Subscribed data-----', data);
-      },
-      error: (error) => {
-        console.log('Subscription error----', error);
-      },
-      complete: () => {
-        // optional
-        console.log('Request completed');
-      },
-    });
+  getItems(): Observable<any> {
+    return this.http.get(this.getUrl);
   }
 
-  getData() {
-    return 'Data from Service';
+  getItemById(id: number) {
+    return this.http.get(`${this.getUrl}?id=${id}`);
   }
 
-  getUsers() {
-    return this.users;
+  addItem(item: any): Observable<any> {
+    return this.http.post(this.getUrl, item);
   }
 
-  fetchData(): Promise<string> {
-    return new Promise((resolve, reject) => {
-      const success = true;
-      setTimeout(() => {
-        if (success) {
-          resolve('Data from resolve---');
-        } else {
-          reject('Error while fetching---rejected');
-        }
-      }, 1000);
-    });
+  updateItem(id: any, updatedItem: any): Observable<any> {
+    return this.http.put(`${this.getUrl}?id=${id}`, updatedItem);
+  }
+
+  deleteItem(id: number): Observable<any> {
+    return this.http.delete(`${this.getUrl}?id=${id}`);
   }
 }
